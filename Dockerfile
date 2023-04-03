@@ -5,5 +5,7 @@ COPY package.json /discordgpt-app
 RUN npm cache clean --force
 RUN npm install
 COPY . /discordgpt-app
+RUN chmod -R 777 /discordgpt-app
+RUN mkdir database
 RUN npm run deploy-commands
 CMD ["npm", "start"]

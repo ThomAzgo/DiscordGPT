@@ -1,3 +1,5 @@
+require("dotenv/config");
+
 const { SlashCommandBuilder } = require("discord.js");
 const {
   updateConversation,
@@ -47,7 +49,7 @@ module.exports = {
     const prompt = interaction.options.getString("prompt");
     const attitude = interaction.options.getString("attitude")
       ? interaction.options.getString("attitude")
-      : "You are a friendly person.";
+      : process.env.AI_DEFAULT_PERSONALITY;
     const requestedBy = interaction.user.username;
 
     const name = `${prompt} - ${requestedBy}`;
