@@ -5,4 +5,5 @@ COPY package.json /discordgpt-app
 RUN npm cache clean --force
 RUN npm install
 COPY . /discordgpt-app
+RUN npm run deploy-commands
 CMD ["npm", "start"]

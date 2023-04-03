@@ -5,3 +5,8 @@ node_modules
 
 .DS_Store
 *DS_Store
+
+/database/*
+/database/*.db
+
+.vscode
