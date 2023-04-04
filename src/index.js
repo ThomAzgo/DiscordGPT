@@ -7,7 +7,7 @@ const { Client, IntentsBitField, Collection, Events } = require("discord.js");
 
 const { checkIdExists, updateConversation } = require("./db-initalize");
 const { replyToPrompt } = require("./openai/chatgpt");
-const { sliceChat } = require("./discord/chat");
+const { sliceChat, sendError } = require("./discord/chat_function");
 
 // Initialize Discord client
 const client = new Client({
@@ -100,10 +100,6 @@ client.on(Events.MessageCreate, async (message) => {
     return await message.channel.send(messageLengthControl);
   }
 });
-
-const sendError = (messageInfo, content) => {
-  return messageInfo.reply(content);
-};
 
 // Notify when the bot is ready
 client.on("ready", () => {

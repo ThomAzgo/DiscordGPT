@@ -1,3 +1,5 @@
+require("dotenv/config");
+
 const { SlashCommandBuilder } = require("discord.js");
 const {
   updateConversation,
@@ -7,7 +9,7 @@ const {
 
 const { replyToPrompt } = require("../openai/chatgpt");
 
-const { sliceChat } = require("../discord/chat");
+const { sliceChat } = require("../discord/chat_function");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -47,7 +49,7 @@ module.exports = {
     const prompt = interaction.options.getString("prompt");
     const attitude = interaction.options.getString("attitude")
       ? interaction.options.getString("attitude")
-      : "You are a friendly person.";
+      : process.env.AI_DEFAULT_PERSONALITY;
     const requestedBy = interaction.user.username;
 
     const name = `${prompt} - ${requestedBy}`;
@@ -106,6 +108,13 @@ module.exports = {
     });
 
     const reply = await replyToPrompt(thread.id);
+
+    if (typeof reply !== "object") {
+      return await interaction.reply({
+        content: `Error from OPENAI - ${reply.toString()}.`,
+        ephemeral: true,
+      });
+    }
 
     await updateConversation(thread.id, reply);
 

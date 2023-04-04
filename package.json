@@ -1,14 +1,29 @@
 {
-  "name": "chatbot-chatgpt",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "chatbot-discordgpt",
+  "version": "2.0.1",
+  "description": "OpenAi chat on discord by ThomAzgo and DestroyCom",
+  "main": "src/index.js",
   "scripts": {
     "start": "node ./src/index.js",
     "deploy-commands": "node ./src/deploy-commands.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "discord",
+    "node",
+    "openai",
+    "chatgpt"
+  ],
+  "homepage": "https://github.com/ThomAzgo/DiscordGPT",
+  "author": {
+    "name": "ThomAzgo",
+    "url": "https://github.com/ThomAzgo"
+  },
+  "contributors": [
+    {
+      "name": "DestroyCom",
+      "url": "https://portfolio.destcom.website/"
+    }
+  ],
   "license": "ISC",
   "dependencies": {
     "discord.js": "^14.8.0",
