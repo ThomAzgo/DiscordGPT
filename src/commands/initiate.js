@@ -9,7 +9,7 @@ const {
 
 const { replyToPrompt } = require("../openai/chatgpt");
 
-const { sliceChat } = require("../discord/chat");
+const { sliceChat } = require("../discord/chat_function");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -108,6 +108,13 @@ module.exports = {
     });
 
     const reply = await replyToPrompt(thread.id);
+
+    if (typeof reply !== "object") {
+      return await interaction.reply({
+        content: `Error from OPENAI - ${reply.toString()}.`,
+        ephemeral: true,
+      });
+    }
 
     await updateConversation(thread.id, reply);
 

@@ -11,7 +11,9 @@ services:
     command: "npm start"
     environment:
       DISCORD_TOKEN: ${DISCORD_TOKEN}
-      OPENAI_KEY: ${OPENAI_KEY}
       CHANNEL_ID: ${CHANNEL_ID}
+      CLIENT_ID: ${CLIENT_ID}
+      GUILD_ID: ${GUILD_ID}
+      OPENAI_KEY: ${OPENAI_KEY}
       AI_DEFAULT_PERSONALITY: ${AI_PERSONALITY:-"You are a friendly person."}
       AI_MODEL: ${AI_MODEL:-"gpt-3.5-turbo"}

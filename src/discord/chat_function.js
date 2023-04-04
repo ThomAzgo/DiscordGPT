@@ -11,4 +11,8 @@ const sliceChat = (message) => {
   return message;
 };
 
-module.exports = { sliceChat };
+const sendError = (messageInfo, content) => {
+  return messageInfo.reply(content);
+};
+
+module.exports = { sliceChat, sendError };
